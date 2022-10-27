@@ -9,6 +9,7 @@
     --color-black: #000000;
     --color-green: #00ae7a;
     --color-blurple: #7289da;
+    --color-panel: #292b2f;
 }
 
 .home {
@@ -150,7 +151,7 @@ nav::-webkit-scrollbar {
 }
 
 .panel {
-    background: var(--color-grey-dark);
+    background: var(--color-panel);
     padding: 0.5rem 1rem;
     display: flex;
     width: 256px;
