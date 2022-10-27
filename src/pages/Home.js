@@ -25,8 +25,8 @@ function Home() {
     return (
         <div className="home">
             <nav>
-                <Guilds />
-                <Sidebar guildId={currentGuild} />
+                <Guilds guildId={currentGuild} />
+                <Sidebar guildId={currentGuild} channelId={currentChannel} />
             </nav>
         </div>
     );

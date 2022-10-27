@@ -20,6 +20,16 @@ export const GuildsContextProvider = ({ children }) => {
                         name: 'general',
                         messages: [],
                     },
+                    {
+                        id: '2',
+                        name: 'help',
+                        messages: [],
+                    },
+                    {
+                        id: '3',
+                        name: 'study',
+                        messages: [],
+                    },
                 ],
             },
             {
