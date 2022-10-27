@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/itsalexi.github.io/discord-clone/static/css/main.e921e7f9.css",
+    "main.js": "/itsalexi.github.io/discord-clone/static/js/main.ec1c4947.js",
+    "index.html": "/itsalexi.github.io/discord-clone/index.html",
+    "main.e921e7f9.css.map": "/itsalexi.github.io/discord-clone/static/css/main.e921e7f9.css.map",
+    "main.ec1c4947.js.map": "/itsalexi.github.io/discord-clone/static/js/main.ec1c4947.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e921e7f9.css",
+    "static/js/main.ec1c4947.js"
+  ]
+}
