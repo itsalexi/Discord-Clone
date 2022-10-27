@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    font-family: Whitney;
+}
+
+:root {
+    --darkgrey: #202225;
+    --grey: #36393f;
+    --verylightgrey: #babbc0;
+    --lightgrey: #a4a7ae;
+    --lightblue: #0a9ad3;
+    --blurple: #5865f2;
+    --red: #ed4245;
+}
+
+.red-span {
+    color: var(--red);
+}
