@@ -20,7 +20,7 @@ export const UserInfoContextProvider = ({ children }) => {
             );
 
             const querySnapshot = await getDocs(q);
-            await new Promise((r) => setTimeout(r, 2000));
+            await new Promise((r) => setTimeout(r, 1000));
 
             querySnapshot.forEach((doc) => {
                 setUser(doc.data());

@@ -8,7 +8,7 @@ import '../css/Home.css';
 import { CurrentContext } from '../components/CurrentContext';
 import MainSection from '../components/MainSection';
 import { UserInfoContext } from '../components/UserInfoContext';
-import SpinnerVideo from '../assets/spinner.mp4';
+import SpinnerVideo from '../assets/spinner.webm';
 
 function Home() {
     const { user } = useContext(UserInfoContext);
