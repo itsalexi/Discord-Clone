@@ -7,7 +7,12 @@ export const GuildsContext = createContext();
 
 export const GuildsContextProvider = ({ children }) => {
     const q = query(collection(db, 'guilds'));
-    const [guilds] = useCollectionData(q, { idField: 'id' });
+    const [guildsData] = useCollectionData(q, { idField: 'id' });
+    const [guilds, setGuilds] = useState([]);
+
+    useEffect(() => {
+        setGuilds(guildsData);
+    }, [guildsData]);
 
     return (
         <GuildsContext.Provider value={guilds}>

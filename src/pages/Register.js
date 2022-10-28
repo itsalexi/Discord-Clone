@@ -76,6 +76,8 @@ function Register() {
             });
 
             navigate('/');
+            // have to refresh or it doesnt load the guilds for some reason
+            window.location.reload(false);
         } catch (err) {
             console.log(err);
             setError(true);
