@@ -147,7 +147,7 @@
 .main-channel {
     display: grid;
     grid-template-columns: 6fr 1fr;
-    height: 94.3vh;
+    height: 92vh;
 }
 
 .member-list {
@@ -176,6 +176,8 @@
     flex-direction: column;
     padding: 1em;
     justify-content: space-between;
+    height: 88vh;
+    gap: 2em;
 }
 
 .message-input-box {
@@ -232,7 +234,7 @@
     flex-direction: column;
     gap: 1em;
     overflow-y: scroll;
-    max-height: 85vh;
+    height: 100%;
 }
 
 .messages::-webkit-scrollbar {
