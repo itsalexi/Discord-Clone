@@ -1,13 +1,13 @@
 import React from 'react';
 import { useContext } from 'react';
 
-import { AuthContext } from './AuthContext';
 import { GuildsContext } from './GuildsContext';
 import { useNavigate } from 'react-router-dom';
 import { CurrentContext } from './CurrentContext';
+import { UserInfoContext } from './UserInfoContext';
 
 const Guilds = () => {
-    const user = useContext(AuthContext);
+    const { user } = useContext(UserInfoContext);
     const guilds = useContext(GuildsContext);
     const { currentGuild } = useContext(CurrentContext);
 
@@ -17,7 +17,7 @@ const Guilds = () => {
         <ul className="guilds-container">
             <li
                 className={
-                    !Number(currentGuild)
+                    !currentGuild
                         ? 'guild-container permanent-blurple selected'
                         : 'guild-container blurple'
                 }
@@ -45,32 +45,38 @@ const Guilds = () => {
             <li className="divider"></li>
             {/*  */}
             {user?.guilds?.map((userGuilds) => {
-                const guild = guilds.find(
-                    (guild) => guild.id === userGuilds.id
+                console.log('where guilds', guilds);
+
+                const guild = guilds?.find(
+                    (guild) => guild?.id === userGuilds?.id
                 );
+
+                console.log('guilds', guilds);
+                console.log('user guilds', userGuilds);
+                console.log('found guild', guild);
 
                 return (
                     <li
                         onClick={() => {
-                            if (Number(currentGuild) !== Number(guild.id)) {
-                                navigate(`/${guild.id}`);
+                            if (currentGuild !== guild?.id) {
+                                navigate(`/${guild?.id}`);
                             }
                         }}
-                        key={guild.id}
+                        key={guild?.id}
                         className={
-                            Number(currentGuild) === Number(guild.id)
+                            currentGuild === guild?.id
                                 ? 'guild-container blurple selected'
                                 : 'guild-container blurple'
                         }
                     >
                         <img
                             className="server-icon"
-                            src={guild.serverImg}
-                            alt={guild.name}
+                            src={guild?.serverImg}
+                            alt={guild?.name}
                         />
 
                         <div className="tooltip-container">
-                            <h4 className="tooltip-text">{guild.name}</h4>
+                            <h4 className="tooltip-text">{guild?.name}</h4>
                         </div>
                     </li>
                 );

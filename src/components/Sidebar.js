@@ -1,19 +1,19 @@
 import React from 'react';
-import { AuthContext } from './AuthContext';
+import { UserInfoContext } from './UserInfoContext';
 import { GuildsContext } from './GuildsContext';
 import { useContext } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CurrentContext } from './CurrentContext';
-
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase';
 const Sidebar = () => {
-    const user = useContext(AuthContext);
+    const { user, setUser } = useContext(UserInfoContext);
     const guilds = useContext(GuildsContext);
-    const { channelId, currentGuild } = useContext(CurrentContext);
 
+    const { currentChannel, currentGuild } = useContext(CurrentContext);
     const [guild, setGuild] = useState({});
-    const [currentChannel, setChannel] = useState(null);
 
     const navigate = useNavigate();
 
@@ -24,16 +24,18 @@ const Sidebar = () => {
 
         if (isUserInGuild) {
             const guild = guilds.find((guild) => guild.id === currentGuild);
+            console.log(guild);
             setGuild(guild);
-            console.log('user is in guild');
-            console.log('Guild:', guild);
-        } else {
-            console.log('user is not in the guild lol');
         }
+    }, [currentGuild]);
 
-        setChannel(channelId);
-    }, [channelId, currentGuild]);
+    useEffect(() => {
+        console.log(user);
+    }, [user]);
 
+    useEffect(() => {
+        console.log('this thinks the guild is', guild);
+    }, [guild]);
     return (
         <div className="sidebar">
             {Object.keys(guild).length !== 0 ? (
@@ -45,16 +47,12 @@ const Sidebar = () => {
                                 <div
                                     key={channel.id}
                                     className={
-                                        Number(currentChannel) ===
-                                        Number(channel.id)
+                                        currentChannel?.id === channel.id
                                             ? 'channel selected'
                                             : 'channel'
                                     }
                                     onClick={() => {
-                                        if (
-                                            Number(currentChannel) !==
-                                            Number(channel.id)
-                                        ) {
+                                        if (currentChannel?.id !== channel.id) {
                                             navigate(
                                                 `/${guild.id}/${channel.id}`
                                             );
@@ -338,7 +336,14 @@ const Sidebar = () => {
                             </svg>
                         </svg>
                     </button>
-                    <button className="switcher tooltip" data-tip="Settings">
+                    <button
+                        onClick={() => {
+                            signOut(auth);
+                            setUser({});
+                        }}
+                        className="switcher tooltip"
+                        data-tip="Logout"
+                    >
                         <svg
                             aria-hidden="true"
                             role="img"

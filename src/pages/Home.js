@@ -2,35 +2,52 @@ import { useEffect } from 'react';
 import { useContext } from 'react';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { AuthContext } from '../components/AuthContext';
 import Guilds from '../components/Guilds';
-import { GuildsContext } from '../components/GuildsContext';
 import Sidebar from '../components/Sidebar';
 import '../css/Home.css';
 import { CurrentContext } from '../components/CurrentContext';
 import MainSection from '../components/MainSection';
+import { UserInfoContext } from '../components/UserInfoContext';
+import SpinnerVideo from '../assets/spinner.webm';
 
 function Home() {
-    const user = useContext(AuthContext);
-    const guilds = useContext(GuildsContext);
+    const { user } = useContext(UserInfoContext);
 
     const { setCurrentChannel, setCurrentGuild } = useContext(CurrentContext);
 
     const params = useParams();
 
     useEffect(() => {
-        console.log(params);
-        setCurrentGuild(params.guildId);
-        setCurrentChannel(params.channelId ? params.channelId : 1);
+        setCurrentGuild(params?.guildId);
+        setCurrentChannel(params?.channelId);
     }, [params]);
 
     return (
         <div className="home">
-            <nav>
-                <Guilds />
-                <Sidebar />
-                <MainSection />
-            </nav>
+            {Object.keys(user).length !== 0 ? (
+                <nav>
+                    <Guilds />
+                    <Sidebar />
+                    <MainSection />
+                </nav>
+            ) : (
+                <div className="loading-screen">
+                    <video
+                        className="loading-video"
+                        preload
+                        autoPlay
+                        loop
+                        muted
+                    >
+                        <source src={SpinnerVideo} type="video/mp4" />
+                    </video>
+                    <div className="loading-title">DID YOU KNOW</div>
+                    <div className="loading-desc">
+                        This isn't actually Discord! This is just a clone
+                        created by Alexi!
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

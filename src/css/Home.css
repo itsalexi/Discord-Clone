@@ -400,3 +400,26 @@ nav::-webkit-scrollbar {
     padding-top: 1em;
     fill: #34373c;
 }
+
+/* loading -screen */
+.loading-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #25262b;
+}
+
+.loading-video {
+    width: 15%;
+    height: 30%;
+}
+
+.loading-title {
+    font-weight: bold;
+}
+.loading-desc {
+    text-align: center;
+    width: 15%;
+}

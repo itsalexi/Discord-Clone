@@ -14,19 +14,30 @@ export const CurrentContextProvider = ({ children }) => {
 
     useEffect(() => {
         console.log('this is cobj:', currentGuildObj);
+        let channel;
+        if (channelId) {
+            channel = currentGuildObj?.channels?.find(
+                (chan) => String(chan.id) === String(channelId)
+            );
+        } else {
+            if (currentGuildObj?.channels?.length > 0) {
+                channel = currentGuildObj.channels[0];
+                setCurrentChannel(currentGuildObj.channels[0].id);
+            }
+        }
 
-        const channel = currentGuildObj?.channels?.find(
-            (chan) => Number(chan.id) === Number(channelId)
-        );
-        console.log('channel id:', channelId);
         setChannel(channel);
-    }, [currentGuildObj]);
+        console.log('this is the channel:', channel);
+    }, [currentGuildObj, guilds]);
 
     useEffect(() => {
-        const guild = guilds?.find((guild) => guild.id === currentGuild);
-        console.log(guild);
+        const guild = guilds?.find(
+            (guild) => String(guild.id) === String(currentGuild)
+        );
+        console.log('setting this to cobj', guild);
+
         setCurrentGuildObj(guild);
-    }, [currentGuild]);
+    }, [currentGuild, guilds]);
 
     return (
         <CurrentContext.Provider
