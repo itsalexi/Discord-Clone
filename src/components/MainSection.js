@@ -1,10 +1,19 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useContext } from 'react';
-import '../css/MainSection.css';
-import { db } from '../firebase';
-import { collection, doc, getDocs, setDoc } from 'firebase/firestore';
 import { useCollection } from 'react-firebase-hooks/firestore';
+
+import '../css/MainSection.css';
+
+import { db } from '../firebase';
+import {
+    collection,
+    query,
+    doc,
+    getDocs,
+    setDoc,
+    orderBy,
+} from 'firebase/firestore';
 
 import { CurrentContext } from './CurrentContext';
 import { GuildsContext } from './GuildsContext';
@@ -12,20 +21,8 @@ import { GuildsContext } from './GuildsContext';
 const MainSection = () => {
     const { channelId, currentGuild, currentChannel, currentGuildObj } =
         useContext(CurrentContext);
+
     const guilds = useContext(GuildsContext);
-
-    const [messages] = useCollection();
-
-    // useEffect(() => {
-    //     const getMessages = async () => {
-    //         const messagesRef = collection(db, 'messages');
-    //         const query = await getDocs(messagesRef);
-    //         query.forEach((doc) => {
-    //             console.log(doc.id, doc.data());
-    //         });
-    //     };
-    //     getMessages();
-    // });
 
     useEffect(() => {
         console.log('channel', currentChannel);
@@ -418,7 +415,8 @@ const MainSection = () => {
             </div>
             <div className="main-channel">
                 <div className="chat-box">
-                    <div className="messages">
+                    <div className="messages"></div>
+                    {/* <div className="messages">
                         {currentChannel?.messages?.map((msg) => {
                             return (
                                 <div key={msg.id} className="message">
@@ -440,7 +438,7 @@ const MainSection = () => {
                                 </div>
                             );
                         })}
-                    </div>
+                    </div> */}
                     <div className="send-message-box">
                         <div className="message-input-box">
                             <div className="button friend-right-option">

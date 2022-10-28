@@ -12,9 +12,8 @@ const Sidebar = () => {
     const { user, setUser } = useContext(UserInfoContext);
     const guilds = useContext(GuildsContext);
 
-    const { channelId, currentGuild } = useContext(CurrentContext);
+    const { currentChannel, currentGuild } = useContext(CurrentContext);
     const [guild, setGuild] = useState({});
-    const [currentChannel, setChannel] = useState(null);
 
     const navigate = useNavigate();
 
@@ -28,9 +27,7 @@ const Sidebar = () => {
             console.log(guild);
             setGuild(guild);
         }
-
-        setChannel(channelId);
-    }, [channelId, currentGuild]);
+    }, [currentGuild]);
 
     useEffect(() => {
         console.log(user);
@@ -50,12 +47,12 @@ const Sidebar = () => {
                                 <div
                                     key={channel.id}
                                     className={
-                                        currentChannel === channel.id
+                                        currentChannel?.id === channel.id
                                             ? 'channel selected'
                                             : 'channel'
                                     }
                                     onClick={() => {
-                                        if (currentChannel !== channel.id) {
+                                        if (currentChannel?.id !== channel.id) {
                                             navigate(
                                                 `/${guild.id}/${channel.id}`
                                             );
