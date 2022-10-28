@@ -63,7 +63,7 @@
 .friend-section {
     display: grid;
     grid-template-columns: 2.5fr 1fr;
-    height: 92.9vh;
+    height: 90vh;
 }
 
 .friend-list {
