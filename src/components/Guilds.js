@@ -1,13 +1,13 @@
 import React from 'react';
 import { useContext } from 'react';
 
-import { AuthContext } from './AuthContext';
 import { GuildsContext } from './GuildsContext';
 import { useNavigate } from 'react-router-dom';
 import { CurrentContext } from './CurrentContext';
+import { UserInfoContext } from './UserInfoContext';
 
 const Guilds = () => {
-    const user = useContext(AuthContext);
+    const { user } = useContext(UserInfoContext);
     const guilds = useContext(GuildsContext);
     const { currentGuild } = useContext(CurrentContext);
 
@@ -17,7 +17,7 @@ const Guilds = () => {
         <ul className="guilds-container">
             <li
                 className={
-                    !Number(currentGuild)
+                    !currentGuild
                         ? 'guild-container permanent-blurple selected'
                         : 'guild-container blurple'
                 }
@@ -45,20 +45,25 @@ const Guilds = () => {
             <li className="divider"></li>
             {/*  */}
             {user?.guilds?.map((userGuilds) => {
+                console.log('guilds', guilds);
+
                 const guild = guilds.find(
-                    (guild) => guild.id === userGuilds.id
+                    (guild) => guild.id === userGuilds?.id
                 );
+                console.log('guilds', guilds);
+                console.log('user guilds', userGuilds);
+                console.log('found guild', guild);
 
                 return (
                     <li
                         onClick={() => {
-                            if (Number(currentGuild) !== Number(guild.id)) {
+                            if (currentGuild !== guild.id) {
                                 navigate(`/${guild.id}`);
                             }
                         }}
                         key={guild.id}
                         className={
-                            Number(currentGuild) === Number(guild.id)
+                            currentGuild === guild.id
                                 ? 'guild-container blurple selected'
                                 : 'guild-container blurple'
                         }

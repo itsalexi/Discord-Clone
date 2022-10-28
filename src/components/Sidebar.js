@@ -25,11 +25,8 @@ const Sidebar = () => {
 
         if (isUserInGuild) {
             const guild = guilds.find((guild) => guild.id === currentGuild);
+            console.log(guild);
             setGuild(guild);
-            console.log('user is in guild');
-            console.log('Guild:', guild);
-        } else {
-            console.log('user is not in the guild lol');
         }
 
         setChannel(channelId);
@@ -39,6 +36,9 @@ const Sidebar = () => {
         console.log(user);
     }, [user]);
 
+    useEffect(() => {
+        console.log('this thinks the guild is', guild);
+    }, [guild]);
     return (
         <div className="sidebar">
             {Object.keys(guild).length !== 0 ? (
@@ -50,16 +50,12 @@ const Sidebar = () => {
                                 <div
                                     key={channel.id}
                                     className={
-                                        Number(currentChannel) ===
-                                        Number(channel.id)
+                                        currentChannel === channel.id
                                             ? 'channel selected'
                                             : 'channel'
                                     }
                                     onClick={() => {
-                                        if (
-                                            Number(currentChannel) !==
-                                            Number(channel.id)
-                                        ) {
+                                        if (currentChannel !== channel.id) {
                                             navigate(
                                                 `/${guild.id}/${channel.id}`
                                             );

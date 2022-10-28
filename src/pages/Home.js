@@ -18,8 +18,8 @@ function Home() {
     const params = useParams();
 
     useEffect(() => {
-        setCurrentGuild(params.guildId);
-        setCurrentChannel(params.channelId ? params.channelId : 1);
+        setCurrentGuild(params?.guildId);
+        setCurrentChannel(params?.channelId);
     }, [params]);
 
     return (

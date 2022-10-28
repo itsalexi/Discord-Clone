@@ -16,7 +16,7 @@ export const CurrentContextProvider = ({ children }) => {
         console.log('this is cobj:', currentGuildObj);
 
         const channel = currentGuildObj?.channels?.find(
-            (chan) => Number(chan.id) === Number(channelId)
+            (chan) => chan.id === channelId
         );
         console.log('channel id:', channelId);
         setChannel(channel);
@@ -24,7 +24,8 @@ export const CurrentContextProvider = ({ children }) => {
 
     useEffect(() => {
         const guild = guilds?.find((guild) => guild.id === currentGuild);
-        console.log(guild);
+        console.log('setting this to cobj', guild);
+        
         setCurrentGuildObj(guild);
     }, [currentGuild]);
 
