@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Discord-Clone/static/css/main.83e9c100.css",
+    "main.css": "/Discord-Clone/static/css/main.7ecdabd0.css",
     "main.js": "/Discord-Clone/static/js/main.3180b5ac.js",
     "index.html": "/Discord-Clone/index.html",
-    "main.83e9c100.css.map": "/Discord-Clone/static/css/main.83e9c100.css.map",
+    "main.7ecdabd0.css.map": "/Discord-Clone/static/css/main.7ecdabd0.css.map",
     "main.3180b5ac.js.map": "/Discord-Clone/static/js/main.3180b5ac.js.map"
   },
   "entrypoints": [
-    "static/css/main.83e9c100.css",
+    "static/css/main.7ecdabd0.css",
     "static/js/main.3180b5ac.js"
   ]
 }
