@@ -174,8 +174,8 @@
     flex-direction: column;
     padding: 1em;
     justify-content: space-between;
-    height: 88vh;
-    gap: 2em;
+    height: 90vh;
+    gap: 1em;
 }
 
 .message-input-box {
@@ -204,34 +204,50 @@
     justify-content: center;
 }
 .message {
-    padding-left: 2em;
+    display: flex;
+    gap: 0.5em;
+    user-select: text;
 }
+
 .message .avatar-wrapper {
     display: flex;
     gap: 1em;
-    width: 48px;
+    width: 40px;
+    align-items: flex-start;
 }
 
 .message-name {
+    color: aqua;
     align-self: flex-start;
+    user-select: text;
+}
+
+.message-time {
+    color: var(--color-grey-white);
+    font-size: 0.8em;
+    padding-left: 0.5em;
+}
+
+.message-submit-form {
+    width: 100%;
 }
 
 .right-message {
     display: flex;
     flex-direction: column;
-    user-select: all;
     width: 100%;
 }
 
 .message-text {
-    width: max-content;
+    width: 100%;
+    user-select: text;
 }
 
 .messages {
     display: flex;
     flex-direction: column;
     gap: 1em;
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 100%;
 }
 

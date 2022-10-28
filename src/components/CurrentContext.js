@@ -22,7 +22,7 @@ export const CurrentContextProvider = ({ children }) => {
         } else {
             if (currentGuildObj?.channels?.length > 0) {
                 channel = currentGuildObj.channels[0];
-                setCurrentChannel(channelId);
+                setCurrentChannel(currentGuildObj.channels[0].id);
             }
         }
 

@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useEffect } from 'react';
 import { useContext } from 'react';
-import { useCollection } from 'react-firebase-hooks/firestore';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { formatRelative } from 'date-fns';
+import { capitalize } from '../helper/helper';
+import { addDoc, Timestamp } from 'firebase/firestore';
 
 import '../css/MainSection.css';
 
@@ -17,12 +20,48 @@ import {
 
 import { CurrentContext } from './CurrentContext';
 import { GuildsContext } from './GuildsContext';
+import { UserInfoContext } from './UserInfoContext';
+import { FirebaseError } from 'firebase/app';
+import { useState } from 'react';
 
 const MainSection = () => {
     const { channelId, currentGuild, currentChannel, currentGuildObj } =
         useContext(CurrentContext);
 
     const guilds = useContext(GuildsContext);
+    const { user } = useContext(UserInfoContext);
+
+    const messagesRef = collection(db, `${channelId}`);
+    const q = query(messagesRef, orderBy('createdAt'));
+    const [messages] = useCollectionData(q, { idField: 'id' });
+
+    const [formValue, setFormValue] = useState('');
+
+    const scroller = useRef();
+
+    const sendMessageHandler = async (e) => {
+        e.preventDefault();
+        const { id, profileImg, name } = user;
+
+        if (formValue !== '') {
+            let message = `${formValue}`;
+            setFormValue('');
+
+            await addDoc(collection(db, `${channelId}`), {
+                id,
+                createdAt: Timestamp.now(),
+                profileImg,
+                name,
+                message,
+            });
+
+            scroller?.current?.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
+    useEffect(() => {
+        scroller?.current?.scrollIntoView({ behavior: 'smooth' });
+    }, [messages]);
 
     useEffect(() => {
         console.log('channel', currentChannel);
@@ -415,30 +454,39 @@ const MainSection = () => {
             </div>
             <div className="main-channel">
                 <div className="chat-box">
-                    <div className="messages"></div>
-                    {/* <div className="messages">
-                        {currentChannel?.messages?.map((msg) => {
+                    <div className="messages">
+                        {messages?.map((msg) => {
                             return (
-                                <div key={msg.id} className="message">
+                                <div key={msg?.createdAt} className="message">
                                     <div className="avatar-wrapper">
                                         <img
                                             src={msg.profileImg}
                                             alt="avatar"
                                             className="avatar"
                                         />
-                                        <div className="right-message">
-                                            <div className="message-name">
-                                                {msg.name}
-                                            </div>
-                                            <div className="message-text">
-                                                {msg.message}
-                                            </div>
+                                    </div>
+                                    <div className="right-message">
+                                        <div className="message-name">
+                                            {msg.name}{' '}
+                                            <span className="message-time">
+                                                {capitalize(
+                                                    formatRelative(
+                                                        msg?.createdAt
+                                                            ?.seconds * 1000,
+                                                        Date.now()
+                                                    )
+                                                )}
+                                            </span>
+                                        </div>
+                                        <div className="message-text">
+                                            {msg.message}
                                         </div>
                                     </div>
                                 </div>
                             );
                         })}
-                    </div> */}
+                        <div ref={scroller}></div>
+                    </div>
                     <div className="send-message-box">
                         <div className="message-input-box">
                             <div className="button friend-right-option">
@@ -450,12 +498,20 @@ const MainSection = () => {
                                     ></path>
                                 </svg>
                             </div>
-
-                            <input
-                                type="text"
-                                className="message-input"
-                                placeholder={`Message #${currentChannel?.name}`}
-                            />
+                            <form
+                                onSubmit={sendMessageHandler}
+                                className="message-submit-form"
+                            >
+                                <input
+                                    type="text"
+                                    className="message-input"
+                                    value={formValue}
+                                    onChange={(e) =>
+                                        setFormValue(e.target.value)
+                                    }
+                                    placeholder={`Message #${currentChannel?.name}`}
+                                />
+                            </form>
 
                             <div className="button friend-right-option">
                                 <svg

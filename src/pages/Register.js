@@ -4,7 +4,7 @@ import AnimatedPage from '../components/AnimatedPage';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth, db } from '../firebase';
 import { useState } from 'react';
-import { doc, setDoc } from 'firebase/firestore';
+import { doc, setDoc, arrayUnion, updateDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 
 function Register() {
@@ -57,11 +57,27 @@ function Register() {
                 email,
                 tag: discrim,
                 profileImg: randomPFP,
-                guilds: [],
+                guilds: [
+                    {
+                        id: 'CtfjiqCHgr2RBkqKTVDP',
+                    },
+                ],
+            });
+
+            // since there is no way to create servers/ manage servers
+            // for now, we will "invite" everyone to one main server
+
+            await updateDoc(doc(db, 'guilds', 'CtfjiqCHgr2RBkqKTVDP'), {
+                members: arrayUnion({
+                    id: res.user.uid,
+                    name: username,
+                    profileImg: randomPFP,
+                }),
             });
 
             navigate('/');
         } catch (err) {
+            console.log(err);
             setError(true);
         }
     };
