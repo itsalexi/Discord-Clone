@@ -7,17 +7,19 @@ import Guilds from '../components/Guilds';
 import { GuildsContext } from '../components/GuildsContext';
 import Sidebar from '../components/Sidebar';
 import '../css/Home.css';
+import { CurrentContext } from '../components/CurrentContext';
+import MainSection from '../components/MainSection';
 
 function Home() {
     const user = useContext(AuthContext);
     const guilds = useContext(GuildsContext);
 
-    const [currentGuild, setCurrentGuild] = useState(0);
-    const [currentChannel, setCurrentChannel] = useState(0);
+    const { setCurrentChannel, setCurrentGuild } = useContext(CurrentContext);
 
     const params = useParams();
 
     useEffect(() => {
+        console.log(params);
         setCurrentGuild(params.guildId);
         setCurrentChannel(params.channelId);
     }, [params]);
@@ -25,8 +27,9 @@ function Home() {
     return (
         <div className="home">
             <nav>
-                <Guilds guildId={currentGuild} />
-                <Sidebar guildId={currentGuild} channelId={currentChannel} />
+                <Guilds />
+                <Sidebar />
+                <MainSection />
             </nav>
         </div>
     );

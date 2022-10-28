@@ -7,7 +7,7 @@ import { AnimatePresence } from 'framer-motion';
 import { AuthContext } from './components/AuthContext';
 import { useContext } from 'react';
 import { useEffect } from 'react';
-import Sidebar from './components/Sidebar';
+import { CurrentContextProvider } from './components/CurrentContext';
 
 function App() {
     const user = useContext(AuthContext);
@@ -30,7 +30,9 @@ function App() {
                     path="/:guildId/:channelId"
                     element={
                         <ProtectedRoute>
-                            <Home />
+                            <CurrentContextProvider>
+                                <Home />
+                            </CurrentContextProvider>
                         </ProtectedRoute>
                     }
                 />
@@ -38,7 +40,9 @@ function App() {
                     path="/:guildId"
                     element={
                         <ProtectedRoute>
-                            <Home />
+                            <CurrentContextProvider>
+                                <Home />
+                            </CurrentContextProvider>
                         </ProtectedRoute>
                     }
                 />
@@ -46,7 +50,9 @@ function App() {
                     path="/"
                     element={
                         <ProtectedRoute>
-                            <Home />
+                            <CurrentContextProvider>
+                                <Home />
+                            </CurrentContextProvider>
                         </ProtectedRoute>
                     }
                 />

@@ -4,22 +4,28 @@ import { useContext } from 'react';
 import { AuthContext } from './AuthContext';
 import { GuildsContext } from './GuildsContext';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { CurrentContext } from './CurrentContext';
 
-const Guilds = (props) => {
+const Guilds = () => {
     const user = useContext(AuthContext);
     const guilds = useContext(GuildsContext);
-    const [currentGuild, setGuild] = useState(null);
-    const navigate = useNavigate();
-    const { guildId } = props;
+    const { currentGuild } = useContext(CurrentContext);
 
-    useEffect(() => {
-        console.log(guildId);
-        setGuild(guildId);
-    }, [guildId]);
+    const navigate = useNavigate();
+
     return (
         <ul className="guilds-container">
-            <li className="guild-container blurple">
+            <li
+                className={
+                    !Number(currentGuild)
+                        ? 'guild-container permanent-blurple selected'
+                        : 'guild-container blurple'
+                }
+                onClick={() => {
+                    console.log('t', currentGuild);
+                    navigate(`/`);
+                }}
+            >
                 <svg
                     aria-hidden="true"
                     role="img"
@@ -45,7 +51,11 @@ const Guilds = (props) => {
 
                 return (
                     <li
-                        onClick={() => navigate(`/${guild.id}`)}
+                        onClick={() => {
+                            if (Number(currentGuild) !== Number(guild.id)) {
+                                navigate(`/${guild.id}`);
+                            }
+                        }}
                         key={guild.id}
                         className={
                             Number(currentGuild) === Number(guild.id)
