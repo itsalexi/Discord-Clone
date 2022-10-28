@@ -2,7 +2,7 @@
 .login {
     height: 100vh;
     background-size: cover;
-    background-image: url('https://i.ibb.co/sq8N4J2/untitled-2.png');
+    background-image: url('https://i.ibb.co/hBdtF8z/untitled-2.png');
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,7 +53,8 @@
     font-size: 1em;
 }
 
-.register_continue, .login_continue {
+.register_continue,
+.login_continue {
     background-color: var(--blurple);
     border: none;
     color: white;
@@ -65,7 +66,8 @@
     margin-top: 0.5em;
 }
 
-.register_continue:hover, .login_continue:hover {
+.register_continue:hover,
+.login_continue:hover {
     background-color: #4752c4;
     transition: background-color 100ms;
     cursor: pointer;
