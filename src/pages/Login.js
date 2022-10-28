@@ -1,7 +1,9 @@
 import '../css/Login.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AnimatedPage from '../components/AnimatedPage';
 function Login() {
+    const navigate = useNavigate();
+
     return (
         <div className="login">
             <AnimatedPage>
@@ -42,7 +44,13 @@ function Login() {
                             <Link className="login__link" to="/login">
                                 Forgot your password?
                             </Link>
-                            <button type="submit" className="register_continue">
+                            <button
+                                onClick={() => {
+                                    navigate(`/`);
+                                }}
+                                type="submit"
+                                className="register_continue"
+                            >
                                 Login
                             </button>
                             <p className="login-redirect">

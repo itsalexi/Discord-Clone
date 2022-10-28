@@ -7,7 +7,6 @@
     justify-content: space-between;
     padding: 1.25em;
     border-bottom: 1px solid var(--color-light-black);
-    width: 100%;
 }
 
 .friend-options {
@@ -45,7 +44,6 @@
     display: flex;
     align-items: center;
     gap: 1em;
-    padding-right: 2em;
 }
 
 .friend-right-option {
