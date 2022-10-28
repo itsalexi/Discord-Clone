@@ -3,7 +3,7 @@ import { useEffect, useState, createContext } from 'react';
 export const GuildsContext = createContext();
 
 export const GuildsContextProvider = ({ children }) => {
-    const [guilds, setGuilds] = useState({});
+    const [guilds, setGuilds] = useState([]);
 
     useEffect(() => {
         // this is where we would get the guilds but we will hard-code it for now
@@ -18,17 +18,28 @@ export const GuildsContextProvider = ({ children }) => {
                     {
                         id: '1',
                         name: 'general',
+                        topic: 'chat whatever you want lmao',
                         messages: [],
                     },
                     {
                         id: '2',
                         name: 'help',
+                        topic: 'this is where u get help or something',
                         messages: [],
                     },
                     {
                         id: '3',
                         name: 'study',
+                        topic: 'this is where we do the studying',
                         messages: [],
+                    },
+                ],
+                members: [
+                    {
+                        id: '1',
+                        name: 'itsAlexi',
+                        profileImg:
+                            'https://cdn.discordapp.com/avatars/571238926451212288/bee15463914b38ed11a8185f206ed374.webp?size=512',
                     },
                 ],
             },
@@ -41,7 +52,16 @@ export const GuildsContextProvider = ({ children }) => {
                     {
                         id: '1',
                         name: 'general',
+                        topic: 'chat all you want here :) this is a testing ground',
                         messages: [],
+                    },
+                ],
+                members: [
+                    {
+                        id: '1',
+                        name: 'itsAlexi',
+                        profileImg:
+                            'https://cdn.discordapp.com/avatars/571238926451212288/bee15463914b38ed11a8185f206ed374.webp?size=512',
                     },
                 ],
             },

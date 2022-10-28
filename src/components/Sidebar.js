@@ -31,13 +31,7 @@ const Sidebar = () => {
             console.log('user is not in the guild lol');
         }
 
-        if (!channelId) {
-            console.log('there is no channel id', channelId);
-            setChannel(1);
-        } else {
-            console.log('this is the channel id', channelId);
-            setChannel(channelId);
-        }
+        setChannel(channelId);
     }, [channelId, currentGuild]);
 
     return (
@@ -344,10 +338,7 @@ const Sidebar = () => {
                             </svg>
                         </svg>
                     </button>
-                    <button
-                        className="switcher tooltip"
-                        data-tip="User Settings"
-                    >
+                    <button className="switcher tooltip" data-tip="Settings">
                         <svg
                             aria-hidden="true"
                             role="img"

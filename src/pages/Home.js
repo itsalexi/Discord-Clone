@@ -21,7 +21,7 @@ function Home() {
     useEffect(() => {
         console.log(params);
         setCurrentGuild(params.guildId);
-        setCurrentChannel(params.channelId);
+        setCurrentChannel(params.channelId ? params.channelId : 1);
     }, [params]);
 
     return (
