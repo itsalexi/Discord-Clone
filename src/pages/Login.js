@@ -19,6 +19,7 @@ function Login() {
         try {
             await signInWithEmailAndPassword(auth, email, password);
             navigate('/');
+            window.location.reload(false);
         } catch (err) {
             setError(true);
         }
