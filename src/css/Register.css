@@ -95,3 +95,7 @@
     font-weight: 600;
     font-size: 0.9em;
 }
+
+.error-message {
+    color: crimson;
+}

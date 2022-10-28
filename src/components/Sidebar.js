@@ -1,17 +1,18 @@
 import React from 'react';
-import { AuthContext } from './AuthContext';
+import { UserInfoContext } from './UserInfoContext';
 import { GuildsContext } from './GuildsContext';
 import { useContext } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CurrentContext } from './CurrentContext';
-
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase';
 const Sidebar = () => {
-    const user = useContext(AuthContext);
+    const { user, setUser } = useContext(UserInfoContext);
     const guilds = useContext(GuildsContext);
-    const { channelId, currentGuild } = useContext(CurrentContext);
 
+    const { channelId, currentGuild } = useContext(CurrentContext);
     const [guild, setGuild] = useState({});
     const [currentChannel, setChannel] = useState(null);
 
@@ -33,6 +34,10 @@ const Sidebar = () => {
 
         setChannel(channelId);
     }, [channelId, currentGuild]);
+
+    useEffect(() => {
+        console.log(user);
+    }, [user]);
 
     return (
         <div className="sidebar">
@@ -338,7 +343,14 @@ const Sidebar = () => {
                             </svg>
                         </svg>
                     </button>
-                    <button className="switcher tooltip" data-tip="Settings">
+                    <button
+                        onClick={() => {
+                            signOut(auth);
+                            setUser({});
+                        }}
+                        className="switcher tooltip"
+                        data-tip="Logout"
+                    >
                         <svg
                             aria-hidden="true"
                             role="img"

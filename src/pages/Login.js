@@ -1,8 +1,28 @@
 import '../css/Login.css';
 import { Link, useNavigate } from 'react-router-dom';
 import AnimatedPage from '../components/AnimatedPage';
+import { useState } from 'react';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase';
+
 function Login() {
     const navigate = useNavigate();
+
+    const [error, setError] = useState(false);
+
+    const handleSubmit = async (e) => {
+        setError(false);
+        e.preventDefault();
+        const email = e.target[0].value;
+        const password = e.target[1].value;
+
+        try {
+            await signInWithEmailAndPassword(auth, email, password);
+            navigate('/');
+        } catch (err) {
+            setError(true);
+        }
+    };
 
     return (
         <div className="login">
@@ -13,7 +33,7 @@ function Login() {
                         <p className="login-box__description">
                             We're so excited to see you again!
                         </p>
-                        <form className="login-form">
+                        <form onSubmit={handleSubmit} className="login-form">
                             <label
                                 htmlFor="login_email"
                                 className="register_label"
@@ -44,13 +64,12 @@ function Login() {
                             <Link className="login__link" to="/login">
                                 Forgot your password?
                             </Link>
-                            <button
-                                onClick={() => {
-                                    navigate(`/`);
-                                }}
-                                type="submit"
-                                className="register_continue"
-                            >
+                            {error && (
+                                <div className="error-message">
+                                    Something went wrong, try again
+                                </div>
+                            )}
+                            <button type="submit" className="register_continue">
                                 Login
                             </button>
                             <p className="login-redirect">
@@ -66,7 +85,7 @@ function Login() {
                         <img
                             className="login__qrcode"
                             alt="randomqr"
-                            src="https://i.ibb.co/Smpv7hf/discordqr.png"
+                            src="https://i.ibb.co/f9w9LD2/discordqr.png"
                         />
                         <p className="login-box__title center">
                             Log in with QR Code
