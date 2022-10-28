@@ -19,7 +19,128 @@ export const GuildsContextProvider = ({ children }) => {
                         id: '1',
                         name: 'general',
                         topic: 'chat whatever you want lmao',
-                        messages: [],
+                        messages: [
+                            {
+                                name: 'itsAlexi',
+                                profileImg:
+                                    'https://cdn.discordapp.com/avatars/571238926451212288/bee15463914b38ed11a8185f206ed374.webp?size=512',
+                                message: 'hello',
+                            },
+                            {
+                                name: 'itsAlexi',
+                                profileImg:
+                                    'https://cdn.discordapp.com/avatars/571238926451212288/bee15463914b38ed11a8185f206ed374.webp?size=512',
+                                message: 'this is a message',
+                            },
+                            {
+                                name: 'itsAlexi',
+                                profileImg:
+                                    'https://cdn.discordapp.com/avatars/571238926451212288/bee15463914b38ed11a8185f206ed374.webp?size=512',
+                                message: 'wait no this is a message',
+                            },
+                            {
+                                name: 'itsAlexi',
+                                profileImg:
+                                    'https://cdn.discordapp.com/avatars/571238926451212288/bee15463914b38ed11a8185f206ed374.webp?size=512',
+                                message: 'wait im a message too though',
+                            },
+                            {
+                                name: 'itsAlexi',
+                                profileImg:
+                                    'https://cdn.discordapp.com/avatars/571238926451212288/bee15463914b38ed11a8185f206ed374.webp?size=512',
+                                message: 'hello',
+                            },
+                            {
+                                name: 'itsAlexi',
+                                profileImg:
+                                    'https://cdn.discordapp.com/avatars/571238926451212288/bee15463914b38ed11a8185f206ed374.webp?size=512',
+                                message: 'this is a message',
+                            },
+                            {
+                                name: 'itsAlexi',
+                                profileImg:
+                                    'https://cdn.discordapp.com/avatars/571238926451212288/bee15463914b38ed11a8185f206ed374.webp?size=512',
+                                message: 'wait no this is a message',
+                            },
+                            {
+                                name: 'itsAlexi',
+                                profileImg:
+                                    'https://cdn.discordapp.com/avatars/571238926451212288/bee15463914b38ed11a8185f206ed374.webp?size=512',
+                                message: 'wait im a message too though',
+                            },
+                            {
+                                name: 'itsAlexi',
+                                profileImg:
+                                    'https://cdn.discordapp.com/avatars/571238926451212288/bee15463914b38ed11a8185f206ed374.webp?size=512',
+                                message: 'hello',
+                            },
+                            {
+                                name: 'itsAlexi',
+                                profileImg:
+                                    'https://cdn.discordapp.com/avatars/571238926451212288/bee15463914b38ed11a8185f206ed374.webp?size=512',
+                                message: 'this is a message',
+                            },
+                            {
+                                name: 'itsAlexi',
+                                profileImg:
+                                    'https://cdn.discordapp.com/avatars/571238926451212288/bee15463914b38ed11a8185f206ed374.webp?size=512',
+                                message: 'wait no this is a message',
+                            },
+                            {
+                                name: 'itsAlexi',
+                                profileImg:
+                                    'https://cdn.discordapp.com/avatars/571238926451212288/bee15463914b38ed11a8185f206ed374.webp?size=512',
+                                message: 'wait im a message too though',
+                            },
+                            {
+                                name: 'itsAlexi',
+                                profileImg:
+                                    'https://cdn.discordapp.com/avatars/571238926451212288/bee15463914b38ed11a8185f206ed374.webp?size=512',
+                                message: 'hello',
+                            },
+                            {
+                                name: 'itsAlexi',
+                                profileImg:
+                                    'https://cdn.discordapp.com/avatars/571238926451212288/bee15463914b38ed11a8185f206ed374.webp?size=512',
+                                message: 'this is a message',
+                            },
+                            {
+                                name: 'itsAlexi',
+                                profileImg:
+                                    'https://cdn.discordapp.com/avatars/571238926451212288/bee15463914b38ed11a8185f206ed374.webp?size=512',
+                                message: 'wait no this is a message',
+                            },
+                            {
+                                name: 'itsAlexi',
+                                profileImg:
+                                    'https://cdn.discordapp.com/avatars/571238926451212288/bee15463914b38ed11a8185f206ed374.webp?size=512',
+                                message: 'wait im a message too though',
+                            },
+                            {
+                                name: 'itsAlexi',
+                                profileImg:
+                                    'https://cdn.discordapp.com/avatars/571238926451212288/bee15463914b38ed11a8185f206ed374.webp?size=512',
+                                message: 'hello',
+                            },
+                            {
+                                name: 'itsAlexi',
+                                profileImg:
+                                    'https://cdn.discordapp.com/avatars/571238926451212288/bee15463914b38ed11a8185f206ed374.webp?size=512',
+                                message: 'this is a message',
+                            },
+                            {
+                                name: 'itsAlexi',
+                                profileImg:
+                                    'https://cdn.discordapp.com/avatars/571238926451212288/bee15463914b38ed11a8185f206ed374.webp?size=512',
+                                message: 'wait no this is a message',
+                            },
+                            {
+                                name: 'itsAlexi',
+                                profileImg:
+                                    'https://cdn.discordapp.com/avatars/571238926451212288/bee15463914b38ed11a8185f206ed374.webp?size=512',
+                                message: 'wait im a message too though',
+                            },
+                        ],
                     },
                     {
                         id: '2',

@@ -401,7 +401,29 @@ const MainSection = () => {
             </div>
             <div className="main-channel">
                 <div className="chat-box">
-                    <div className="messages"></div>
+                    <div className="messages">
+                        {currentChannel?.messages?.map((msg) => {
+                            return (
+                                <div key={msg.id} className="message">
+                                    <div className="avatar-wrapper">
+                                        <img
+                                            src={msg.profileImg}
+                                            alt="avatar"
+                                            className="avatar"
+                                        />
+                                        <div className="right-message">
+                                            <div className="message-name">
+                                                {msg.name}
+                                            </div>
+                                            <div className="message-text">
+                                                {msg.message}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
                     <div className="send-message-box">
                         <div className="message-input-box">
                             <div className="button friend-right-option">
