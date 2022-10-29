@@ -34,6 +34,7 @@ function Login() {
                         <p className="login-box__description">
                             We're so excited to see you again!
                         </p>
+
                         <form onSubmit={handleSubmit} className="login-form">
                             <label
                                 htmlFor="login_email"
@@ -79,6 +80,10 @@ function Login() {
                                     Register
                                 </Link>
                             </p>
+                            <p className="login-redirect">
+                                This website is not affiliated with Discord in
+                                anyway.
+                            </p>
                         </form>
                     </div>
                     <div className="login-separator"></div>
@@ -92,8 +97,8 @@ function Login() {
                             Log in with QR Code
                         </p>
                         <p className="login-box__description">
-                            Don't scan this with the <b>Discord mobile app</b>{' '}
-                            to log in instantly.
+                            This is a <b>Discord Clone</b>, please don't enter
+                            any real details to this website.
                         </p>
                     </div>
                 </div>
