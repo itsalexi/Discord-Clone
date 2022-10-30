@@ -99,3 +99,23 @@
 .error-message {
     color: crimson;
 }
+
+@media (max-width: 550px) {
+    .register-box {
+        height: 100vh;
+        width: 100vw;
+        display: grid;
+        place-content: center;
+        place-items: center;
+    }
+
+    .register_input {
+        width: auto !important;
+    }
+    .register-form {
+        width: 100%;
+    }
+    .register__link {
+        justify-self: flex-start;
+    }
+}

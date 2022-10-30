@@ -34,3 +34,21 @@
 .login-separator {
     width: 3em;
 }
+
+@media (max-width: 550px) {
+    .login-box {
+        height: 100vh;
+        width: 100vw;
+        display: grid;
+        place-content: center;
+        place-items: center;
+    }
+    .login-right-box,
+    .login-separator {
+        display: none;
+    }
+
+    .login_input {
+        width: auto !important;
+    }
+}

@@ -54,7 +54,6 @@ function Register() {
             await setDoc(doc(db, 'users', res.user.uid), {
                 id: res.user.uid,
                 name: username,
-                email,
                 tag: discrim,
                 profileImg: randomPFP,
                 guilds: [
