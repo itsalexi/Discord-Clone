@@ -1,6 +1,9 @@
 .main-section {
     background: var(--color-evenlighter-grey);
     margin-left: 23em;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 .main-top-section {
     display: flex;
@@ -144,8 +147,7 @@
 
 .main-channel {
     display: grid;
-    grid-template-columns: 6fr 1fr;
-    height: 92vh;
+    grid-template-columns: 6fr 2fr;
 }
 
 .member-list {
@@ -154,6 +156,8 @@
     display: flex;
     flex-direction: column;
     gap: 1em;
+    overflow-y: scroll;
+    height: 85vh;
 }
 .member {
     display: flex;
