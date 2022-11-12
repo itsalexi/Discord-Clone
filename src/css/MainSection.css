@@ -157,7 +157,7 @@
     flex-direction: column;
     gap: 1em;
     overflow-y: scroll;
-    height: 85vh;
+    height: 89.4vh;
 }
 .member {
     display: flex;
@@ -178,7 +178,7 @@
     flex-direction: column;
     padding: 1em;
     justify-content: space-between;
-    height: 88vh;
+    height: 91vh;
     gap: 1em;
 }
 
